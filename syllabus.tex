@@ -1,0 +1,357 @@
+\documentclass[11pt,onecolumn]{article}
+\usepackage{amsmath,amssymb,setspace,hyperref,graphicx,multirow}
+\hypersetup{colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black}
+\usepackage{multicol}
+\usepackage[table]{xcolor}
+
+\setlength{\pdfpagewidth}{8.5in}
+\setlength{\pdfpageheight}{11in}
+\setlength{\evensidemargin}{-0.1in} \setlength{\oddsidemargin}{-0.1in}
+\setlength{\textwidth}{6.75in} \setlength{\textheight}{9.75in}
+\setlength{\topmargin}{-0.33in} \setlength{\headheight}{0in}
+
+\newcounter{qNum}
+\setcounter{qNum}{1}
+\newcommand{\q}[1]{\vspace*{0.1in} \noindent
+\arabic{qNum}.(#1)~\stepcounter{qNum}}
+
+\usepackage{xspace}
+
+% Oxford double square brackets
+\newcommand{\vl}[1]{\ensuremath{[\![}#1\ensuremath{]\!]}}
+
+% from derek.bib, for compatibility with tufte-latex
+\providecommand{\SA}[1]{#1}
+\providecommand{\SAG}[1]{#1}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\biTight}{\vspace{-\parskip}\bi\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt} }
+\newcommand{\beTight}{\vspace{-\parskip}\be\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt} }
+
+\newcommand{\p}[1]{\paragraph{#1}}
+
+\newcommand{\tuple}[1]{\ensuremath{\langle #1 \rangle}}
+
+\newcommand{\eg}{\emph{e.g.}\xspace}
+\newcommand{\ie}{\emph{i.e.}\xspace}
+\newcommand{\etc}{\emph{etc.}\xspace}
+\newcommand{\etal}{\emph{et~alia}\xspace}
+\newcommand{\vs}{\emph{vs.}\xspace}
+\newcommand{\cf}{\emph{cf.}\xspace}
+
+\newcommand{\suppress}[1]{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% table of contents with reduced spacing
+\newlength{\dfrtmpparskip}
+\providecommand{\tighttableofcontents}{
+    \setlength{\dfrtmpparskip}{\parskip}
+    \setlength{\parskip}{0pt plus 1ex}
+    \tableofcontents
+    \setlength{\parskip}{\dfrtmpparskip}
+}
+\newcommand{\tightlistoffigures}{
+    \setlength{\dfrtmpparskip}{\parskip}
+    \setlength{\parskip}{0pt plus 1ex}
+    \listoffigures
+    \setlength{\parskip}{\dfrtmpparskip}
+}
+
+%\makeatletter
+%\def\url@leostyle{%
+%  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\scriptsize\ttfamily}}}
+%\makeatother
+%\urlstyle{leo}
+\newcommand{\squishlist}{
+ \begin{list}{$\bullet$}
+  { \setlength{\itemsep}{0pt}
+     \setlength{\parsep}{3pt}
+     \setlength{\topsep}{3pt}
+     \setlength{\partopsep}{0pt}
+     \setlength{\leftmargin}{1.5em}
+     \setlength{\labelwidth}{1em}
+     \setlength{\labelsep}{0.5em} } }
+\newcommand{\squishend}{
+  \end{list}  }
+
+\newenvironment{changemargin}[1]{% 
+  \begin{list}{}{% 
+    \setlength{\topsep}{0pt}% 
+    \setlength{\leftmargin}{#1}% 
+    \setlength{\rightmargin}{1em}
+    \setlength{\listparindent}{\parindent}% 
+    \setlength{\itemindent}{\parindent}% 
+    \setlength{\parsep}{\parskip}% 
+  }% 
+  \item[]}{\end{list}}
+
+\begin{document}
+\pagestyle{empty}
+
+\renewcommand{\arraystretch}{0.92}
+
+\begin{center}
+\begin{Large}
+Introduction to Methods of Software Engineering\\
+SE 101, Fall 2018\\[1em]
+\end{Large}
+
+\begin{large}
+Patrick Lam \\
+Director, Software Engineering Program\\
+\end{large}
+\end{center}
+
+\section{Overview}
+This half-weight course introduces you to the Software Engineering programme and to engineering as a profession. The focus is more on soft skills (which are super important!) rather than hard technical skills, although you will still be writing software for the course project.
+
+\paragraph{Objectives.}
+By the end of this course, you will have demonstrated:
+\squishlist
+\item discussing and summarizing engineering professionalism and ethics case studies, proposing a course of action;
+\item discussing and summarizing intellectual property as it applies to you as a student, employee and entrepreneur (differentiating different IP protection mechanisms), as well as revenue models associated with software companies; 
+\item describing key software engineering activities, including requirements elicitation, design, and testing;
+\item writing meaningful paragraphs of English text;
+\item writing code to control a small computer (\eg, Arduino or
+Raspberry Pi);
+\item using a source code version control system; 
+\item enjoying software engineering!
+\squishend
+
+\paragraph{Calendar Description:}
+\begin{quote}
+    An introduction to some of the basic methods and principles used by software engineers, including fundamentals of technical communication, measurement, analysis, and design. Some aspects of the software engineering profession, including standards, safety and intellectual property. Professional development including r\'esum\'e skills, interview skills, and preparation for co-op terms.
+\end{quote}
+
+\section{General Information}
+
+\paragraph{Course Web Page/git repository.} 
+
+The course notes are contained in the following repository (both URLs
+refer to the same repo, but via different protocols). 
+
+\begin{center}
+\url{https://github.com/patricklam/se101-f18.git}\\
+\url{git@github.com:patricklam/se101-f18.git}
+\end{center}
+
+\noindent You will also submit some of your work into a git repository. You will
+need to make an account on {\tt git.uwaterloo.ca} to do so. We will teach
+you how to make an SSH key so that you can commit your work to the
+repo.
+
+\vspace*{1em} \noindent
+Course announcements will be made on LEARN.
+
+
+\newpage
+\paragraph{Course staff.}~\\[1em]
+\begin{tabular}{ll}
+{\bf Instructor} & Patrick Lam, {\tt patrick.lam@uwaterloo.ca}\\
+Drop-in Hours:& DC 2539; Wednesdays 12:30--1:30, or by appointment \\
+& (make an appointment by chatting with me after class) \\
+
+What to call me:& ``Patrick,'' or if you must: ``Prof.~Lam,'' or ``Dr.~Lam.''\\
+What not to call me:& ``Mr.~Lam'' \\ \\
+
+{\bf Teaching Assistant} &
+James Cagalawan, {\tt james.cagalawan@uwaterloo.ca}\\
+Drop-in Hours: & DC 2577; Mondays and Fridays 12:30--1:30 \\
+{\bf Teaching Assistant (WEEF)} &
+Xiao Zhou, {\tt x258zhou@edu.uwaterloo.ca}\\
+Drop-in Hours: & DC 2577; weekdays 12:30--1:30; and, \\
+& Oct 8 onwards: 4:30--5:30
+\end{tabular}
+
+\noindent Both TAs are senior Software Engineering students here to help you with SE 101
+and the transition to university.
+
+\paragraph{Slack.}~\\[1em]
+TAs will monitor {\tt https://uwse2023.slack.com} especially during lectures.
+Please ask questions in class, either orally or on Slack.
+
+\paragraph{Software Engineering program staff.}~\\[1em]
+\begin{tabular}{ll}
+  {\bf Director} & Patrick Lam, {\tt se-direc@uwaterloo.ca} \\
+  {\bf Associate Director} & Derek Rayside, {\tt se-assoc@uwaterloo.ca} \\
+  {\bf Undergraduate Advisor/Coordinator} & Shaz Rahaman, {\tt se-advisor@uwaterloo.ca} \\
+  {\bf Mentor} & Rollen D'Souza (SE 2016), {\tt rs2dsouz@uwaterloo.ca}
+\end{tabular}
+
+\paragraph{Textbook.} None.
+
+
+\section{Grading Scheme}
+
+\hspace*{0.25in}
+\begin{minipage}{4in}
+\beTight
+    \item Team Project: \hspace{\fill} 50\%
+        \biTight
+        \item Proposal + Prototype Plan \hspace{\fill} 5\% \parbox{0.5in}{~}
+        \item Prototype \hspace{\fill} 10\% \parbox{0.5in}{~}
+        \item Final \hspace{\fill} 35\% \parbox{0.5in}{~}
+        \ei
+    \item Individual Activities \hspace{\fill} 35\%
+        \biTight
+        \item Assignments (in class) \hspace{\fill} 28\% \parbox{0.5in}{~}
+        \item Quests \hspace{\fill} 7\% \parbox{0.5in}{~}
+        \ei
+    \item Co-op \hspace{\fill} 15\%
+        \biTight
+        \item Fundamentals \hspace{\fill} 10\% \parbox{0.5in}{~}
+        \item Workplace Issues \hspace{\fill} 5\% \parbox{0.5in}{~}
+        \ei
+    \item \textbf{Total:} \hspace{\fill} \fbox{100\%}
+\ee
+\end{minipage}
+\vspace{0.25in}
+
+\noindent
+The Co-op material is delivered by a representative of the Co-op
+office in class, and assessed by them online in LEARN. They
+communicate those grades back to the SE101 instructor.
+
+\vspace*{1em} \noindent 
+%
+There will be separate documents describing the Project deliverables
+and Quests.
+
+\newpage
+\paragraph{Lateness:}
+\biTight
+    \item \emph{Project:} Your team's latest commit on the Git
+    server at the time of the deadline. Commit early; commit often;
+    remember to push!
+    \item \emph{Quests:} Quest deadlines are more elastic. The most
+    important thing is that you complete the quest with honesty and
+    integrity. The point is to demonstrate that you have the personal
+    qualities required to be a professional. Grace is granted up to 
+    one week after the nominal deadline.
+\ei
+
+
+\paragraph{Collaboration.} Different courses have different policies
+about collaboration: it is important to pay close attention. If you
+violate a course collaboration policy, it might be considered
+plagiarism, and might be reported to the Associate Dean.
+
+In SE101, you are expected to collaborate within your team. Between
+teams, you may discuss ideas, design alternatives, and help each other
+debug small fragments of code. Each team must submit their own,
+independently-developed, code. A good heuristic is ``look, but don't
+write:'' you can look at other teams' code, but don't do that anywhere
+that you might be writing your own code.
+
+To be precise, teams are not permitted to share code electronically
+or in written form.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Schedule}
+
+\begin{tabular}{cp{2.5in}p{2.5in}}
+\textbf{\emph{Week}} & \textbf{\emph{Tuesday}} & \textbf{\emph{Thursday}} \\
+(Sunday) & MC1085 2:30pm--4:20pm & CPH1346 10:30am--12:20pm \\ 
+\hline
+\hline \arrayrulecolor{lightgray}
+Sep 9  & [L01] PB\&J & [T01] Git Set Up \\
+       & Co-op Fundamentals 1 & [L02] How to Student \\
+\hline
+Sep 16 & Class Rep Elections &  [L04] Intellectual Property \\
+       & [L03] Engineering Disasters & [T02] Git Merges \\
+       & Co-op Fundamentals 2 & \\
+\hline
+Sep 23 & MATH 115 lecture (2 hrs) & Spaceship Activity 1 \\
+       &  & 10:30--4:30 \\
+\hline
+Sep 30  & Reflection on Spaceship Activity & Spaceship Activity 2 \\
+       & Co-op Fundamentals 3 & 10:30--4:30 \\
+\hline
+Oct 7 & \emph{No Class: Thanksgiving} & \emph{Logical Tuesday} \\
+&  & [L05] Prototyping \\
+&  & [L06] Real-World \\
+&& ~~~~~~~~ Software Engineering \\
+\hline
+Oct 14 & \emph{No Class: Midterm Week} & \emph{No Lab: Midterm Week} \\
+\hline
+Oct 21 & [L07/L08] Written Communication & \emph{Due: Prototype} \\
+       &  & Prototype Demos \\
+\hline
+Oct 28 & [L09] Program Efficiency & Prototype Demos \\
+       & [L10] Abstraction & \\
+\hline
+Nov 4 & Midterm Results Review & Prototype Demos \\
+      & [L11] about Quest 3: Dynamic & \\
+      & [L12] Ethics Case Study & \\
+\hline
+Nov 11 & [L13] Professional Responsibility /  & Co-op: Workplace Issues \\
+       & ~~~~~~~~  Whistleblowing \\
+       & [L14] Computation and SQL & \\
+\hline
+Nov 18 & [L15] Bonus Material & \emph{Due: Project} \\
+       & [L16] Summary & Project Demos \\
+\hline
+Nov 25 & Project Demos & Project Demos \\
+\hline
+
+\end{tabular}
+\newpage
+
+\paragraph{Project Deadlines}
+\beTight
+    \item Thursday, October 4th: Groups formed + purchase orders
+    placed
+    \item Thursday, October 11th: 
+        \biTight
+            \item 12:30pm: draft proposal + prototype plan
+            \item 9pm: revised proposal + prototype plan
+        \ei
+    \item Thursday, October 25th 11:30am: first prototype due (tagged in Git)
+    \item Thursday, November 22rd 11:30am: project due
+\ee
+
+\paragraph{Quest Deadlines}
+
+\beTight
+    \item Friday, Oct 5 9pm: Quest 1 Prep
+    \item Tuesday, Oct 9: Quest 1 Day 1
+    \item Monday, Oct 22, 8:30am: Quest 1 Complete
+    \item Tuesday, Oct 30, 4:30pm: Quest 2 deliverable to CPH1320 (office closes at 4:30pm)
+    \item Tuesday, Nov 20: Quest 3 complete
+\ee
+
+
+\paragraph{Co-op Deadlines}
+
+\beTight
+    \item Resume \& Resume Quiz: September 17, 7pm
+    \item Pre-Course Survey: September 14, 7pm
+    \item Interview Quiz \& Foundation Quiz: September 26, 7pm
+    \item Foundation for Co-op Success Quiz: October 12, 7pm
+    \item Post-CFE Module Survey: October 19, 7pm
+    \item Harrassment Quiz: November 22, 7pm
+\ee
+
+
+
+%***********************************************************************
+\section{University Policies}
+
+\begin{tabular}{ @{\hspace{0.25in}}l l }
+Academic integrity: & \url{http://uwaterloo.ca/academicintegrity/}\\
+Petition \& Grievance:
+& \url{http://secretariat.uwaterloo.ca/Policies/policy70.htm}\\
+Discipline: & \url{http://secretariat.uwaterloo.ca/Policies/policy71.htm} \\
+Penalties: 
+&  \url{http://secretariat.uwaterloo.ca/guidelines/penaltyguidelines.htm}\\
+Appeals: & \url{http://secretariat.uwaterloo.ca/Policies/policy72.htm} \\
+AccessAbility: & \url{https://uwaterloo.ca/disability-services/}
+\end{tabular}
+
+
+\end{document}
