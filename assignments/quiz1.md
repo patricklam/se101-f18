@@ -1,5 +1,5 @@
 # SE 101 In-Class Quiz 1
-## September 14, 2018
+## September 13, 2018
 
 This quiz is open-book. In fact you can even (quietly) talk to your neighbour about it.
 
