@@ -1,0 +1,208 @@
+\documentclass[11pt]{article}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{enumerate}
+\usepackage{url}
+%\usepackage{algorithm2e}
+\usetikzlibrary{arrows,automata,shapes}
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{bt} = [rectangle, draw, fill=blue!20, 
+    text width=1em, text centered, rounded corners, minimum height=2em]
+
+\lstset{ %
+language=Java,
+basicstyle=\ttfamily,commentstyle=\scriptsize\itshape,showstringspaces=false,breaklines=true,numbers=left}
+
+\newtheorem{defn}{Definition}
+\newtheorem{crit}{Criterion}
+
+\newcommand{\handout}[5]{
+  \noindent
+  \begin{center}
+  \framebox{
+    \vbox{
+      \hbox to 5.78in { {\bf Intro to Methods of Software Engineering } \hfill #2 }
+      \vspace{4mm}
+      \hbox to 5.78in { {\Large \hfill #5  \hfill} }
+      \vspace{2mm}
+      \hbox to 5.78in { {\em #3 \hfill #4} }
+    }
+  }
+  \end{center}
+  \vspace*{4mm}
+}
+
+\newcommand{\lecture}[4]{\handout{#1}{#2}{#3}{#4}{Lecture #1}}
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+\textheight 8.9in
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+\textwidth 6.5in
+
+\parindent 0in
+\parskip 1.5ex
+%\renewcommand{\baselinestretch}{1.25}
+
+\newcommand{\squishlist}{
+ \begin{list}{$\bullet$}
+  { \setlength{\itemsep}{0pt}
+     \setlength{\parsep}{3pt}
+     \setlength{\topsep}{3pt}
+     \setlength{\partopsep}{0pt}
+     \setlength{\leftmargin}{1.5em}
+     \setlength{\labelwidth}{1em}
+     \setlength{\labelsep}{0.5em} } }
+\newcommand{\squishlisttwo}{
+ \begin{list}{$\bullet$}
+  { \setlength{\itemsep}{0pt}
+     \setlength{\parsep}{0pt}
+    \setlength{\topsep}{0pt}
+    \setlength{\partopsep}{0pt}
+    \setlength{\leftmargin}{2em}
+    \setlength{\labelwidth}{1.5em}
+    \setlength{\labelsep}{0.5em} } }
+\newcommand{\squishend}{
+  \end{list}  }
+
+\begin{document}
+
+\lecture{4 --- September 20, 2018}{Fall 2018}{Patrick Lam}{version 1}
+
+\section*{Software Engineering and Intellectual Property}
+
+\noindent
+Q: ``I'm just writing software, why do I care about Intellectual Property?''
+
+\noindent
+A: Turns out that software is important in the real world these days and \\
+there are billion-dollar lawsuits about it, e.g.
+
+\includegraphics[width=.4\textwidth]{images/L04-oracle_clr.png}
+\begin{minipage}{2em} versus \vspace*{1.4em}
+\end{minipage}
+\includegraphics[width=.4\textwidth]{images/L04-g-header-2480.png}
+
+\noindent
+Q: ``What is Intellectual Property\footnote{Richard Stallman advocates not using that term at all: \url{https://www.gnu.org/philosophy/not-ipr.en.html}.}?''
+
+\noindent
+A: IP is:
+\squishlist
+\item a government-granted monopoly on certain actions;
+\item an analogy to other types of property, e.g. real property, tangible property.
+\squishend
+
+\noindent
+Q: Why does IP exist?
+
+\noindent
+A: US Constitution: ``to promote the Progress of Science and useful Arts, by securing for limited Times to Authors and Inventors the exclusive Right to their respective Writings and Discoveries.''
+
+\noindent
+If people can make money by writing books, we might see more people writing books.
+
+\noindent
+Q: Why is the analogy to other types of property misleading?
+
+\noindent
+A: per Thomas Jefferson: ``He who receives an idea from me, receives insrtuction himself without lessening mine; as he who lights his taper at mine, receives light without darkening me.'' Useful economics keyword: IP is ``non-rivalrous''.
+
+\noindent
+Q: What does ``government-granted monopoly'' mean?
+
+\noindent
+A: ``The Man'' is going to come and take you away if you do
+not stop the offending behaviour.
+
+\noindent
+Q: Which actions are protected by IP law?
+
+\noindent
+A: depends on the kind of IP; see below.
+
+\newpage
+\noindent
+Q: What kinds of IP are there?
+
+\noindent
+A: The most important kinds of IP for software engineers are:
+\squishlist
+\item copyrights;
+\item patents;
+\item trade secrets; and
+\item trademarks.
+\squishend
+
+\paragraph{Side note.} At the University of Waterloo, inventors own the intellectual property
+they create.
+
+\section*{About Copyright}
+
+\paragraph{Exclusive rights.} The copyright owner is allowed to prevent others from:
+\squishlist
+  \item producing and selling copies of the work;
+  \item performing/displaying/transmitting the work; and
+  \item creating derivative works.
+\squishend
+
+\paragraph{Applicability.} e.g. code, movies, literary works, maps. Not lists-of-facts,
+e.g. phone books.
+
+\paragraph{Ownership.} The author of the work, or for works-for-hire created in the
+course of the author's employment, the employer. Can be sold.
+
+\paragraph{Duration.} In Canada, creator's lifetime plus 50 years. In the United States, creator's
+lifetime plus 70 years.
+
+\paragraph{Exceptions to copyright.} Fair dealing (Canada)/fair use (United States); public domain works; free software/Creative Commons materials.
+
+\paragraph{Fair dealing/fair use.} Sets out (sort of complicated) exceptions to copyright protection, e.g. copying a short excerpt from a book for education is allowed. US fair use is more permissive than Canadian fair dealing.
+
+\paragraph{Public domain.} Works on which copyright has expired/was waived can be freely used. (United States Government works are public domain, but not Canadian government works.)
+
+\paragraph{Free software/Creative Commons.} Hack the copyright system to allow re-use. Work is still under copyright, but author grants permission to copy under certain conditions, e.g. must-attribute-author, or (GPL) use only in other GPL'd code.
+
+\noindent (Some Open Educational Resources textbooks are coming out which help reduce textbook costs by being freely distributable.)
+
+\section*{A note on plagiarism}
+Plagiarism may seem related to copyright, but it differs in a number of ways.
+
+Essentially, \emph{plagiarism is the use of materials for academic credit without permission.}
+
+If you get caught plagiarising, you get a meeting with the instructor; typically for a first
+case, the penalty is a 0 on the assignment and -5\% on the course score. We also document
+the case so that we know about subsequent offenses.
+
+\paragraph{Exercise.} Why might you be tempted to plagiarize? What should you do to avoid plagiarism?
+
+\section*{Patents}
+
+\paragraph{Applicability.} According to Industry Canada\footnote{\url{https://www.ic.gc.ca/eic/site/cipointernet-internetopic.nsf/eng/h_wr03652.html}}:
+
+\noindent
+``Patents cover new and useful inventions (product, composition, machine, process) or any new and useful improvement to an existing invention.''
+
+\paragraph{Principle.} You share your invention with the world and get a limited-time monopoly on using your invention.
+
+\paragraph{Software Engineering and Patents.} It's complicated, and varies country-by-country. Copyright protects particular implementations. Patents can (sometimes) protect a process that the computer is carrying out.
+
+\paragraph{Patent trolls.} Some companies own patents but don't build things. Their business model
+is to launch patent infringement lawsuits and settle cases for money.
+
+\section*{Trade Secrets}
+\paragraph{Example.} Coca-Cola recipe.
+
+\paragraph{Principle.} A trade secret is information that is not disclosed to the world.
+Trade secrets are protected against misappropriation (perhaps by a non-disclosure agreement)
+but not against reverse engineering. Unlike patents, trade secrets do not expire.
+
+\section*{Trademarks}
+\paragraph{Examples.} Kodak, Starbucks.
+
+\paragraph{Principle.} Protect consumers against confusingly-similar names.
+
+\end{document}
