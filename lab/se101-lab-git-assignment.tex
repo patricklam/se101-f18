@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{url}
+
+\begin{document}
+\title{\vspace{-0.5in}SE101---\texttt{git} Assignment}
+\author{Rollen D'Souza, Derek Rayside, Patrick Lam}
+\date{Fall 2018\\Last Updated \today\\Due : October 21, 2018 @ noon}
+\maketitle
+
+\section*{Introduction}
+To help you keep on track, we are going to do prototype demos starting October 21. Your prototype demo will include showing us that you did Q1 (tagging). We will not directly assess Q2; we that trust you will complete it for your own learning purposes.
+
+\subsection*{Relevant Readings}
+\begin{itemize}    
+    \item\href{https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History}{Git Book (2.3) : Viewing Commit History}
+    \item\href{https://git-scm.com/book/en/v2/Git-Basics-Tagging}{Git Book (2.6) : Tagging}
+\end{itemize}
+
+\section*{Q1 : Tagging}
+Recall that \texttt{git} retains the history of changes in atomic units known as commits. If you perform \texttt{git log} in the local copy of your repository, you will be able to see all the commits made to your repository. You will notice that these commits are associated with a sequence of letters and numbers (actually, a hexadecimal number) that appear random. This sequence is a unique identifier for each commit and is known as a commit hash.
+
+For example, consider the commit \href{https://github.com/patricklam/se101-f18/commit/8bb9cb87d0b2aeb44a5096cecc892e83a8538dfb}{8bb9cb87d0b2aeb44a5096cecc892e83a8538dfb} in the \texttt{se101-notes} repository. If you perform
+
+\begin{center}
+  \texttt{git checkout 8bb9cb87d0b2aeb44a5096cecc892e83a8538dfb},
+\end{center}
+\noindent
+your local files will be made to match that of the particular commit. This is extremely useful if, for example, you wish to inspect some older code without having to browse the online user interface. (It will refuse to do so if you have uncommitted changes.)
+
+Of course, no one can remember a large number of important commit hashes. Tags allow us to give clean names to an important commit in the development history. In practice, these are often used to give names to specific changes that mark a particular complete version of software. This allows users to clone a repository and checkout a given version without taking any future changes made to the project. In the lab, we would like you to tag the version of your software that you wish to submit, prior to the deadline.
+
+Let's say you committed a working prototype and you now wish to continue working on the project without ruining the prototype.
+\begin{itemize}
+\item First, execute \texttt{git log} or view the commit history online to find out what the commit hash of the commit associated with your complete prototype.
+\item Then, perform \texttt{git tag lab-prototype COMMIT\_HASH} (replacing COMMIT\_HASH with the commit hash), which will give the name \texttt{lab-prototype} to that commit.
+\item Finally, push that tag using \texttt{git push origin lab-prototype}.
+\end{itemize}
+
+We will ask you, in your demo, to checkout this particular version when demoing.
+
+\emph{WARNING: You \textbf{do not} have permissions to replace the tag on the server once you have pushed it. \textbf{Do not} push the tag until you are \textbf{certain} that that is the submission you wish to provide.}
+
+\section*{Q2 : Merging}
+To ensure that you are using \texttt{git} effectively, we would like you to perform the following tasks with your group members at the same time, in each others' presence, in the following order:
+\begin{enumerate}
+    \item Every group member must create a file named mygroup.txt in \emph{their copy} of the group repository with their username in it. You must do it on your own computers so that every person has a file that has different content, but the same file name.
+    \item Every group member creates a commit for that file.
+    \item One group member must push their commit (\texttt{git push origin master})
+    \item Another group member must perform a pull (merging the others content) (\texttt{git pull origin master}), creating another commit, and push their changes.\label{item:merge}
+    \item Repeat (\ref{item:merge}) until the repository has a file \texttt{mygroup.txt} that has all members names.
+\end{enumerate}
+(This is similar to the in-class exercise you did on Sept 20. But do it with your group members.)
+
+\end{document}
