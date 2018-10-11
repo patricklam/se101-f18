@@ -1,0 +1,151 @@
+\documentclass[11pt]{article}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage{enumitem}
+%\usepackage{algorithm2e}
+\usetikzlibrary{arrows,automata,shapes}
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{bt} = [rectangle, draw, fill=blue!20, 
+    text width=1em, text centered, rounded corners, minimum height=2em]
+
+\lstset{ %
+language=C,
+basicstyle=\ttfamily,commentstyle=\scriptsize\itshape,showstringspaces=false,breaklines=true,numbers=left}
+
+\newtheorem{defn}{Definition}
+\newtheorem{crit}{Criterion}
+
+\newcommand{\handout}[5]{
+  \noindent
+  \begin{center}
+  \framebox{
+    \vbox{
+      \hbox to 5.78in { {\bf Intro to Methods of Software Engineering } \hfill #2 }
+      \vspace{4mm}
+      \hbox to 5.78in { {\Large \hfill #5  \hfill} }
+      \vspace{2mm}
+      \hbox to 5.78in { {\em #3 \hfill #4} }
+    }
+  }
+  \end{center}
+  \vspace*{4mm}
+}
+
+\newcommand{\lecture}[4]{\handout{#1}{#2}{#3}{#4}{Lecture #1}}
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+\textheight 8.9in
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+\textwidth 6.5in
+
+\parindent 0in
+\parskip 1.5ex
+%\renewcommand{\baselinestretch}{1.25}
+
+\begin{document}
+
+\lecture{7 --- October 11, 2018}{Fall 2018}{Patrick Lam}{version 1}
+
+\section*{Introduction to Unit Tests}
+
+Verification and validation are always part of engineering. In your SE
+curriculum, the 3A course SE 465 (``Software Testing, Quality
+Assurance and Maintenance'') is where most V\&V content lives. There
+is also some content in CS 247 (``Software Engineering
+Principles''). But it's important to talk about it earlier than that,
+which is why we'll be talking about it today.
+
+\paragraph{Key Concept: Automated testing.} The state of the art in 2018
+is to \emph{automate} software testing. Anyone should be able to
+check out a project and just press a button to run the tests.
+
+Why automate? Testing is boring and people make mistakes. With
+automation, you can run more tests more quickly. (You need to first
+put in some work to set up the automated testing. Setting up test
+suites is engineering, in the broad sense.)
+
+There is also a role for non-automated testing, particularly
+exploratory testing, but that is beyond the scope of today's lecture.
+
+\section*{Show me the code!}
+You've already seen tests in your CS 137 assignments. This is a test from
+Assignment 3 Problem 2, courtesy Prof. Carmen Bruni:
+
+\begin{lstlisting}
+int A1[2][3] = {{1,1,1},{1,1,3}};
+assert(isDist(2,3,A1) == false);
+\end{lstlisting}
+
+Let's break down what's happening here.
+\begin{itemize}[noitemsep]
+\item prepare input data;
+\item pass inputs to function;
+\item compare outputs.
+\end{itemize}
+
+The statement
+\begin{lstlisting}
+  int A1[2][3] = {{1,1,1},{1,1,3}};
+\end{lstlisting}
+is preparing array {\tt A}. In general there might be more sophisticated setup code; you might
+need to read data from a file, for instance.
+
+\newpage
+The second line does two things. It calls the function:
+\begin{lstlisting}
+  isDist(2,3,A1)
+\end{lstlisting}
+which executes the System Under Test.
+
+Then it gets a return value and checks it against the expected value.
+\begin{lstlisting}
+  assert(value_from_SUT == false);
+\end{lstlisting}
+If the value is indeed false, then the test succeeds. Otherwise it fails.
+
+\paragraph{Main idea.} Pass your system under test some input and check its output.
+
+\paragraph{Considerations.} It's easiest to test individual functions
+as seen here with {\tt isDist}. It's also easiest when functions don't
+have side-effects. The spaceship code from the Ideas Clinic would be
+harder to test; for instance, the defence system called the turret
+controls to fire missiles.
+
+As tests get more complicated, it's good to put tests each in their
+own function. There are unit testing frameworks as well; JUnit for
+Java is ubiquitous. C's unit testing frameworks (Check, CUnit)
+are harder to use, so we're not going to talk about htem.
+
+\paragraph{What tests should I write?} There is no magic answer.
+Check all of the obvious ``happy paths'' and some error paths.
+
+\section*{Continuous Integration / Continuous Deployment}
+In the spaceship, you saw the concept of integrating your work with
+others' work. Continuous integration is where everyone merges their
+work whenever they do it. This requires automated test cases so that
+you can know that you're not breaking the system with your work. Once
+you write something, you make sure that it passes the tests.
+
+\paragraph{Benefits of Automated Test Suites.}
+In bullet form:
+\begin{itemize}
+\item avoid regressions (things that used to work now being broken);
+\item enable newcomers to confidently modify your code;
+\item serve as a specification of the code.
+\end{itemize}
+
+\paragraph{Test-Driven Development.} You can go even further
+and write the tests before you write the code. This is what you have
+in the CS 137 assignments for instance.
+
+\paragraph{Are tests foolproof?} Maybe you submitted something to
+Marmoset that you knew wasn't quite right but it passed anyway.
+Why is that? How would an instructor find such cases?
+
+\end{document}
