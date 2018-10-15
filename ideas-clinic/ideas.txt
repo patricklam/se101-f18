@@ -1,0 +1,110 @@
+~90 responses out of 120 students
+
+# Q1: what did you learn?
+
+## teamwork and communication
+important to communicate between groups, and manage working together at the same pace
+"communication and leadership are important within a spaceship to accomplish things: some divisions need things from other divisions to progress but with proper communication of details such as knowing what info will be passed over, the dependent divisions can still progress rather than sit still and wait"
+"allocating work evenly is difficult in open-ended project - not everyone productive and might have felt left out / bored"
+"how to program in a team setting where not all code is by self"
+"how hectic communication between teams can be when there's no organization. you just yell at each other basically, and everybody is frantically trying to do 3 things at once"
+collaboration and its value in reducing merge conflicts
+integrate project components: communication and local testing
+"everyone needs to be invested in/understand a project for it to be successful"
+hard to work on code simultaneously e.g. keep track of everything going on
+"should all cooperate to do a large project; if you don't understand something, ask and learn"
+plan before you execute
+"always better to ask for help than to trudge on alone"
+
+## pair programming
+"pair programming reduces debug time!"
+"tried pair programming for the first time. As partner with less experience, was surprised to learn that I could successfully contribute as the "driver" and that it benefitted the dev process" +1
+
+## version control
+"without version control, it would be incredibly difficult to merge the various changes from different subteams into one codebase"
+".gitignore"
+"git is a tempestuous mistress"
+
+# Q2: what would you improve?
+
+## more guidance
+"make intended goals more clear; didn't realize we were supposed to swap after each iteration"
+"check in to make sure they're actually e.g. rotating squads"
+"have the more experienced students in each group lead the less experienced ones so that everyone can contribute equally"
+"keep groups on track with making pairs, switching groups, working towards each iteration; was group leader's job but they didn't necessarily know enough"
+more structure/guidance re pair programming, switching stations, etc
+explain each step of the quest (?) project
+"emphasize first task is to communicate between teams; seeing the code makes it too easy to start thinking too far ahead/about more complex elements and not focussing on the task at hand"
+"large portion of time was spent not knowing what to do, resulting in demotivation. Maybe introduce smaller tasks/more attainable goals? Or introduce a way to increase individual ownership"
+more instruction for programming and unity so that can focus on github
+hard coded solution for a different universe
+code snippets / example code
+dealing with undocumented API was useful because people need to actually do that
+talk about project management/collaboration during activity introduction
+
+## engagement
+people leaving early/no-showing for the second session
+"a lot of people seemed to get disinterested quickly if they didn't force themselves to contribute, and some people left meaning the subteam sizes were uneven. Encourage people more and check in with teams, or designate leaders"
+"16 people was too many, in my opinion. I understand the idea of 2 pairs per each of the 4 components, and the idea of having more skills because more people are in each group, but I think having 4 people in each group would make the activity more engaging overall."
+found it hard to keep focus; find a way to keep students engaged for whole time
+"smaller spaceship groups... each individual has opportunity to contribute rather than a few students doing all the work while others watch"
+team/peer eval option at the end of the activity
+start with a smaller lab with groups of 4; the larger the group, the more lost people get
+
+## having/getting skills
+learning unity on-the-fly was hard
+skill distribution in pairs and groups
+bug in provided code
+more in-depth git lesson: common errors/mistakes
+would be able to contribute more if knew about C#
+include some unity doco so that people spend less time learning unity and more time using git
+live coding demo explaining basics of C#
+
+## scope of activity
+"one-day activity, less coding e.g. need only 1 coder per group of 4"
+maybe 1B is better?
+shorter, more segmented; 3-4 hours is plenty. more guidance to start: those who have never worked with such a project somewhat overwhelmed
+second day was much less fun; people less motivated. First day was fairly enjoyable.
+
+## documentation
+"would recommend allowing students to read the challenge in advance so they're able to clarify any confusion ahead of time"
+
+# Q3: how was CPH 1346?
+
+## liked the layout
+space to wander around, plenty of room, very nice
+close by, rows effectively organized subteams
+clear divide between subsystems but close enough to communicate
+rows allowed intra-squad communication
+easy to communicate with everyone in group
+somewhat distant from teammates but was not a large impact
+noise level was fine
+good close space for collaboration
+good for pair programming
+big and comms difficult, but realistic for workplaces. Loved the pizza.
+intra-squad easy, inter-squad hard
+room encourages being a team
+good lighting
+easy to collaborate
+good, but E7 would be nicer
+noise level good
+whiteboards for all!
+
+## weird layout
+round tables might help allow more discussion +3
+stepped layout slightly inconvenient +2
+comms slightly difficult
+many computers but little space for group discussion
+distances between squads made things difficult
+regular classroom would have been much better, as much of the space was difficult to physically access
+ok, but better in a smaller space without levels so that group is closer
+try to get a room with 4 people rows
+horrible for inter-squad comms
+stairs = seemed like separate teams, sent representatives to communicate, sometimes communication disjointed
+
+## IT
+computers had unity, next to POETS, but chair moving needed
+most people have laptops, computers maybe not required
+wifi slow +1
+lab computers had VS, which was useful
+ensure git installed on all computers
