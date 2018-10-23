@@ -1,5 +1,5 @@
 # SE 101 In-Class Quiz 2
-## September 27, 2016
+## October 22, 2018
 
 This quiz is open-book. In fact you can even (quietly) talk to your neighbour about it. Again, I expect answers of at most 3 sentences.
 
