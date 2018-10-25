@@ -1,0 +1,226 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+%\usepackage{algorithm2e}
+
+\lstset{ %
+  basicstyle=\ttfamily,commentstyle=\scriptsize\itshape,showstringspaces=false,breaklines=true,numbers=none}
+\lstset{
+     literate=%
+         {á}{{\'a}}1
+         {í}{{\'i}}1
+         {é}{{\'e}}1
+         {ý}{{\'y}}1
+         {ú}{{\'u}}1
+         {ó}{{\'o}}1
+         {ě}{{\v{e}}}1
+         {š}{{\v{s}}}1
+         {č}{{\v{c}}}1
+         {ř}{{\v{r}}}1
+         {ž}{{\v{z}}}1
+         {ď}{{\v{d}}}1
+         {ť}{{\v{t}}}1
+         {ň}{{\v{n}}}1                
+         {ů}{{\r{u}}}1
+         {Á}{{\'A}}1
+         {Í}{{\'I}}1
+         {É}{{\'E}}1
+         {Ý}{{\'Y}}1
+         {Ú}{{\'U}}1
+         {Ó}{{\'O}}1
+         {Ě}{{\v{E}}}1
+         {Š}{{\v{S}}}1
+         {Č}{{\v{C}}}1
+         {Ř}{{\v{R}}}1
+         {Ž}{{\v{Z}}}1
+         {Ď}{{\v{D}}}1
+         {Ť}{{\v{T}}}1
+         {Ň}{{\v{N}}}1                
+         {Ů}{{\r{U}}}1    
+}
+
+\newtheorem{defn}{Definition}
+\newtheorem{crit}{Criterion}
+
+\newcommand{\handout}[5]{
+  \noindent
+  \begin{center}
+  \framebox{
+    \vbox{
+      \hbox to 5.78in { {\bf Intro to Methods of Software Engineering } \hfill #2 }
+      \vspace{4mm}
+      \hbox to 5.78in { {\Large \hfill #5  \hfill} }
+      \vspace{2mm}
+      \hbox to 5.78in { {\em #3 \hfill #4} }
+    }
+  }
+  \end{center}
+  \vspace*{4mm}
+}
+
+\newcommand{\lecture}[4]{\handout{#1}{#2}{#3}{#4}{Lecture #1}}
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+\textheight 8.9in
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+\textwidth 6.5in
+
+\parindent 0in
+\parskip 1.5ex
+%\renewcommand{\baselinestretch}{1.25}
+
+\begin{document}
+
+\lecture{9 --- October 23, 2018}{Fall 2018}{Patrick Lam}{version 1}
+
+\section*{Volkswagen Emissions Scandal}
+
+We are going to continue our ethics discussion with Volkswagen, which is 
+highly germane to software engineers. 
+
+\subsection*{Context}
+There is some political will to reduce CO$_2$ emissions in response to
+climate change.  Diesel produces maybe 10--20\% fewer CO$_2$ emissions
+than gasoline per distance travelled, and more torque, but also more nitrous oxides
+(NO$_\mathrm{x}$) and more fine particulate matter (also known as PM2.5, or
+soot).
+
+Historically, diesel has been popular in Europe (around 50\% of the
+car market) but not in North America (around 3\% of the car market,
+was growing until the scandal broke).  Yet people had been
+observing higher soot emissions in cities, and the Paris mayor, Anne
+Hidalgo, had called for diesel bans or buybacks, even prior to the
+scandal. As of October 2018, diesel bans are coming in German cities:
+Hamburg, Berlin, Stuttgart, Frankfurt.
+
+\subsection*{The Issue}
+
+Volkswagen's CEO had a stated objective of leading VW to be the biggest
+car manufacturer in the world. However, to sell cars in the US, they had to meet
+new, stricter NO$_\mathrm{x}$ limits. (NO$_\mathrm{x}$ aggravates asthma, among other
+ill effects). Since 2008, they have been advertising ``clean diesels'' which allegedly meet
+the new limits.
+
+Catalytic converters reduce NO$_\mathrm{x}$ levels in gas engines, but
+don't work for diesel engines. Instead, the usual solution is to use
+``selective catalytic reduction'', which injects urea into the
+combustion mixture. But the car then needs a urea tank and refills.
+
+Or, in an illustration of a classic engineering tradeoff, the manufacturer
+can sacrifice either power or fuel efficiency for cleaner emissions. Since it's 2016,
+the tradeoff is controlled by software running in the engine control unit.
+
+\subsection*{The Discovery}
+Before the scandal broke, experts had been quietly suspicious about
+the lack of an urea tank\footnote{Afterwards, Prof. Dudenhoffer, director of the Center for Automotive Research at the University of Duisburg-Essen, said ``They must have known that it's impossible, or else it's not possible they have degrees as engineers.''}; and customers had noticed soot on their
+cars. 
+
+In any case, it was odd that the US cars satisfied stronger standards
+than those in Europe. The International Council on Clean
+Transportation (ICCT), an engineering-heavy thinktank, wanted to know
+why. It commissioned engineers at West Virginia University to
+investigate.
+
+VWU engineers Marc Besch and Arvind Thiruvengadam performed in-lab and
+on-road testing of both VWs and BMWs. The in-lab tests, under
+controlled conditions, achieved the advertised emissions targets. But once
+they brought the VW cars on the road, they found NO$_\mathrm{x}$ emissions
+that were $5\times$ to $35\times$ over targets. Not so for the BMWs. They presented
+their work at the \emph{Real-World Emissions Workshop}, an academic conference,
+in May 2014.
+
+\subsection*{Regulators and Consequences}
+
+The US Environmental Protection Agency started quietly investigating
+soon afterwards.  Presumably after some period of discussions with
+Volkswagen, they published a Notice of Violation in September 2015, at
+which point the scandal made the news (see below). Although Volkswagen
+owned up to the cheating (at some level) fairly early, it
+continues to face massive consequences, including a steep decline in
+sales, a change in CEO, a drop in stock value, and even raids of their
+offices.
+
+\section*{Engineering Analysis}
+
+\subsection*{How did this work?}
+\begin{itemize}[noitemsep]
+\item it's all software-controlled;
+\item when the software detects test conditions (no steering/fixed speeds/etc), it switches into so-called ``dyno calibration'' mode.
+\item fewer emissions but also less torque and less efficiency.
+\item must have been put in by software engineers working with the engine designers.
+\end{itemize}
+
+\subsection*{How did this happen?}
+\begin{itemize}[noitemsep]
+\item regulators set an objective testing scheme that was possible to hack (is being improved);
+\item fundamentally, there is an engineering tradeoff: urea tank vs targets for torque and fuel efficiency.
+\item Upper management set specifications which were not achievable; they attempted to blame rogue engineers; VW is an engineering-focussed organization, not credible.
+\end{itemize}
+
+
+\newpage
+\section*{References}
+
+I've only provided a superficial summary of the situation. There is a
+lot of good long-form journalism on this topic. Good to read over Christmas.
+Most links retrieved 21 November 2016.
+
+\noindent
+These are good general articles about the Volkswagen scandal.
+
+\begin{itemize}
+\item Russell Hotten, BBC. ``VW: The scandal explained.'' 10 December 2015. \url{http://www.bbc.com/news/business-34324772}
+\item Damien McGuinness, BBC. ``VW emissions scandal hits 11m vehicles.'' 22 September 2015. \url{http://www.bbc.com/news/business-34325005}
+\item Clifford Atiyeh, Car and Driver blog. ``Everything you need to know about the VW Diesel-Emissions Scandal.'' Updated 15 November 2016. 
+
+\url{http://blog.caranddriver.com/everything-you-need-to-know-about-the-vw-diesel-emissions-scandal/}
+\item Ezra Dyer, Popular Mechanics. ``This VW Diesel Scandal is Much Worse Than a Recall.'' 21 September 2015. \url{http://www.popularmechanics.com/cars/a17430/ezra-dyer-volkswagen-diesel-controversy/} (includes editorializing)
+\item Daniel Beaulieu, autotrader.ca. ``Dieselgate from the Driver's Seat, Part 1.'' 22 June 2016. \url{http://www.autotrader.ca/newsfeatures/20160622/dieselgate-from-the-drivers-seat-part-1/#mJcbvZyFcUR6rimd.97} (Canadian first-person viewpoint)
+\item Philip E. Ross, IEEE Spectrum. ``How Engineers at West Virginia University Caught VW Cheating.'' 22 Sep 2015. \url{http://spectrum.ieee.org/cars-that-think/transportation/advanced-cars/how-professors-caught-vw-cheating} (slightly more technical)
+\end{itemize}
+
+\noindent
+About diesel in general:
+\begin{itemize}
+\item Richard Anderson, BBC. ``Diesel cars: What's all the fuss about?'' 16 September 2015. \url{http://www.bbc.com/news/business-34257424}
+\item Damian Carrington, Gwyn Topham and Peter Walker, The Guardian. ``Revealed: nearly all new diesel cars exceed official pollution limits''. 23 April 2016. \url{https://www.theguardian.com/business/2016/apr/23/diesel-cars-pollution-limits-nox-emissions}
+\item Taras Grescoe, NY Times. ``The Dirty Truth about 'Clean Diesel'.'' 2 January 2016. \url{http://www.nytimes.com/2016/01/03/opinion/sunday/the-dirty-truth-about-clean-diesel.html} (opinion piece about diesel)
+\item Jill Petzinger, Quartz. ``Europe's intoxicating love affair with diesel is dying out.'' 22 January 2018. \url{https://qz.com/1183779/europes-intoxicating-love-affair-with-diesel-is-dying-out/} (2018 updates about diesel in Europe)
+\item IFDC, via EurekAlert! ``Urea tanks on diesel trucks---that's the law in the United States starting in 2010''. 10 November 2008. \url{https://www.eurekalert.org/pub_releases/2008-11/i-uto111008.php}
+\end{itemize}
+
+\noindent
+Earlier hints of defeat devices and diesel drawbacks:
+\begin{itemize}
+\item Arthur Neslen, The Guardian. ``European commission warned of car emissions test cheating, five years before VW scandal.'' 20 June 2016. \url{https://www.theguardian.com/environment/2016/jun/20/european-commission-warned-car-maker-suspected-cheating-five-years-vw-scandal}
+\item John Voelcker, Green Car Reports. ``Are 'Clean Diesels' Actually Not Nearly As Clean As Claimed?'' 9 April 2015. \url{http://www.greencarreports.com/news/1097698_are-clean-diesels-actually-not-nearly-as-clean-as-claimed} (coverage before the headlines)
+\item Brian Turner, driving.ca. ``To diesel or not to diesel? Pros and cons of diesel vs. gas.'' 23 March 2015. \url{http://driving.ca/volkswagen/golf/auto-news/news/to-diesel-or-not-to-diesel-that-is-the-question} (pre-scandal opinions re: diesel)
+\item David Booth, driving.ca. ``Motor Mouth: Is diesel a sticky, ticking time bomb?'' 13 February 2015. \url{http://driving.ca/auto-news/entertainment/motor-mouth-stinky-time-bomb-why-diesel-is-at-a-crossroads} (notes Paris mayor is anti-diesel due to soot, pre-scandal)
+\end{itemize}
+
+\noindent
+Long-form investigative reporting:
+\begin{itemize}
+\item William Boston, The Wall Street Journal. ``Volkswagen Emissions Investigation Zeros in on Two Engineers.'' 5 October 2015. \url{http://www.wsj.com/articles/vw-emissions-probe-zeroes-in-on-two-engineers-1444011602} (paywall)
+\item Dune Lawrence, Bloomberg. ``How Could Volkswagen's Top Engineers Not Have Known?'' 21 October 2015. \url{http://www.bloomberg.com/news/articles/2015-10-21/how-could-volkswagen-s-top-engineers-not-have-known-} (contains an engineering analysis)
+\item Geoffrey Smith and Roger Parloff. ``Hoaxwagen: How the massive diesel fraud incinerated VW's reputation---and will hobble the company for years to come.'' 7 March 2016. \url{http://fortune.com/inside-volkswagen-emissions-scandal/} Super detailed investigative reporting.
+\end{itemize}
+
+\noindent
+Primary sources:
+\begin{itemize}
+\item Rachel Muncrief, The International Council on Clean Transportation. ``Defeat device testing in the EU: So far, not so good.'' 28 April 2016. \url{http://www.theicct.org/blogs/staff/defeat-device-testing-eu-so-far-not-so-good}
+\item John German, The International Council on Clean Transportation. ``The emissions test defeat device problem in Europe is not about VW.'' 12 May 2016. \url{http://www.theicct.org/blogs/staff/emissions-test-defeat-device-problem-europe-not-about-vw}
+\end{itemize}
+
+
+
+\end{document}
