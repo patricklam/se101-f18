@@ -16,6 +16,10 @@ QUESTS
         - you can still socialize after 9pm: just no screen time
         - exception: going to the movies
 
+* PURPOSE
+---------
+
+Lack of sleep makes you more stupid.
 
 2. DANGEROUS
 ------------
@@ -64,5 +68,28 @@ QUESTS
 
 3. DYNAMIC
 ----------
-... instructions to come ...
+
+    1. Walk + Talk (at least once)
+        - Go for a walk across the creek.
+	- Walk with a friend or two.
+	- Discuss ideas.
+
+    2. Hand Stretches
+        - 3 times, on 3 different days
+	- https://www.prevention.com/fitness/5-stretches-that-can-ease-your-carpal-tunnel-pain
+
+    3. The 7 Minute Workout (at least once)
+        - https://well.blogs.nytimes.com/2013/05/09/the-scientific-7-minute-workout/
+
+    4. Tactical Breathing
+        - 3 times, on 3 different days
+	- inhale to count of 4
+	- exhale to count of 4
+	- do it for 4 minutes
+
+* PURPOSE
+---------
+
+You won't be young forever, but you have some control over how healthy you are.
+
 
