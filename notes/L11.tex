@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+%\usepackage{algorithm2e}
+
+\lstset{ %
+  basicstyle=\ttfamily,commentstyle=\scriptsize\itshape,showstringspaces=false,breaklines=true,numbers=none}
+\lstset{
+     literate=%
+         {á}{{\'a}}1
+         {í}{{\'i}}1
+         {é}{{\'e}}1
+         {ý}{{\'y}}1
+         {ú}{{\'u}}1
+         {ó}{{\'o}}1
+         {ě}{{\v{e}}}1
+         {š}{{\v{s}}}1
+         {č}{{\v{c}}}1
+         {ř}{{\v{r}}}1
+         {ž}{{\v{z}}}1
+         {ď}{{\v{d}}}1
+         {ť}{{\v{t}}}1
+         {ň}{{\v{n}}}1                
+         {ů}{{\r{u}}}1
+         {Á}{{\'A}}1
+         {Í}{{\'I}}1
+         {É}{{\'E}}1
+         {Ý}{{\'Y}}1
+         {Ú}{{\'U}}1
+         {Ó}{{\'O}}1
+         {Ě}{{\v{E}}}1
+         {Š}{{\v{S}}}1
+         {Č}{{\v{C}}}1
+         {Ř}{{\v{R}}}1
+         {Ž}{{\v{Z}}}1
+         {Ď}{{\v{D}}}1
+         {Ť}{{\v{T}}}1
+         {Ň}{{\v{N}}}1                
+         {Ů}{{\r{U}}}1    
+}
+
+\newtheorem{defn}{Definition}
+\newtheorem{crit}{Criterion}
+
+\newcommand{\handout}[5]{
+  \noindent
+  \begin{center}
+  \framebox{
+    \vbox{
+      \hbox to 5.78in { {\bf Intro to Methods of Software Engineering } \hfill #2 }
+      \vspace{4mm}
+      \hbox to 5.78in { {\Large \hfill #5  \hfill} }
+      \vspace{2mm}
+      \hbox to 5.78in { {\em #3 \hfill #4} }
+    }
+  }
+  \end{center}
+  \vspace*{4mm}
+}
+
+\newcommand{\lecture}[4]{\handout{#1}{#2}{#3}{#4}{Lecture #1}}
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+\textheight 8.9in
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+\textwidth 6.5in
+
+\parindent 0in
+\parskip 1.5ex
+%\renewcommand{\baselinestretch}{1.25}
+
+\begin{document}
+
+\lecture{11 --- November 6, 2018}{Fall 2018}{Patrick Lam}{version 1}
+
+\section*{Impostor syndrome}
+
+\url{https://www.forbes.com/sites/mariaklawe/2018/10/08/lets-talk-about-impostor-syndrome/}
+
+Maria Klawe is a Canadian computer scientist who is president of
+Harvey Mudd, a small science and engineering undergraduate college in
+California. (She also holds an honourary doctorate from the University
+of Waterloo).
+
+In her words:
+\begin{quote}
+  As new students take on the challenges of their first semester at
+  college, many will experience self-doubt. They may feel like they
+  don't belong in their new setting or wonder if they are as talented
+  as the students around them or worry that soon everyone will find
+  out that they are actually a failure. What they might not realize is
+  that they are not alone—these feelings are incredibly common, and
+  there's a name for them: impostor syndrome.
+\end{quote}
+
+\paragraph{What is Impostor Syndrome?}
+A feeling of not deserving one's success, especially in the
+presence of substantial success. Maybe you feel like you
+got lucky, or maybe you think that you fooled others about your
+abilities.
+
+People report that impostor syndrome does not go away with increasing
+success. It does seem to be more common for members of
+underrepresented groups.
+
+\paragraph{What to do about it?}
+Here are some of Maria Klawe's tips:
+\begin{enumerate}
+\item Ask for help and accept it. (You are not weaker for asking for help; you can pay it forward by helping others also). Ask earlier rather than later.
+\item Don't be defeated by feelings of failure. Failure is not something to fear.
+\item Talk about your feelings.
+\item Celebrate your successes. (Also a ritual that the Engineers without Borders encouraged at Fall Convocation last week).
+\item Surround yourself with people who encourage you.
+\item Try different things. ``Sometimes there's a doorway just a little to the side, and if I would just move over a bit I could open the door.''
+\item Don't let your fears stop you from giving your best effort.
+\end{enumerate}
+
+She writes that it's in part a matter of perspective, and that failure is a powerful teacher, leading to perseverance.
+
+\section*{Peers}
+\begin{quote}
+  Thank your classmates. They will be your friends for life.
+\end{quote}
+\hfill --- Pearl Sullivan at Spring Convocation, 2018.
+
+Most of us can't do university on our own. As mentioned above, ask for help from your peers and from teachers
+(TAs, instructors, etc).
+
+You may feel that you're just receiving help from others. You'll have
+a chance to help others later, either in your class or in lower-year
+classes. Helping others can help you better consolidate your knowledge
+too.
+
+There's also not just help with school but also with emotional
+issues. Be there to actively listen to your friends when they are having a
+tough time; it happens to all of us.
+
+As I emailed yesterday, I encourage you all to sign up for Hive, one
+of the Capstone Design Projects from SE 2019. The goal is to facilitate
+mentoring and networking relationships between students and we strongly
+support this goal.
+
+\paragraph{Peer Pressure.}
+We all exist in society. I think it's a fundamental aspect of human nature
+to exist in homogeneous societies; maybe it's a fact that we're more comfortable
+with people who are like us, and we use peer pressure to actively enforce homogeneity.
+[I am not a sociologist. Take SOC 101 if you want a professional opinion about this.]
+
+I will admit that my inner voice likes to be judgey of people. ``Am I
+better than X?  Worse than Y?'' However, I take active steps to not
+act on these thoughts and tell myself that the thoughts are
+inappropriate. There is a lot that I can't perceive, and writing
+people off means that I'll miss out on a lot. I try to learn from everyone.
+
+I think it's OK to say to myself ``I wouldn't do what person Z is doing''
+but I think it's not OK to say ``Person Z shouldn't be doing that,''
+especially to person Z. I think it's better to celebrate diversity and
+how we are all different.
+
+One caveat: this only applies as long as what people are doing is not
+harmful to others or to the world. I think it's totally fine to be judgey
+about someone who just drops their Kleenex on the ground.
+
+
+
+
+\end{document}
