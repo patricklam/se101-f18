@@ -1,0 +1,139 @@
+\documentclass[11pt]{article}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{enumerate}
+\usepackage{url}
+%\usepackage{algorithm2e}
+\usetikzlibrary{arrows,automata,shapes}
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{bt} = [rectangle, draw, fill=blue!20, 
+    text width=1em, text centered, rounded corners, minimum height=2em]
+
+\lstset{ %
+language=Java,
+basicstyle=\ttfamily,commentstyle=\scriptsize\itshape,showstringspaces=false,breaklines=true,numbers=left}
+
+\newtheorem{defn}{Definition}
+\newtheorem{crit}{Criterion}
+
+\newcommand{\handout}[5]{
+  \noindent
+  \begin{center}
+  \framebox{
+    \vbox{
+      \hbox to 5.78in { {\bf Intro to Methods of Software Engineering } \hfill #2 }
+      \vspace{4mm}
+      \hbox to 5.78in { {\Large \hfill #5  \hfill} }
+      \vspace{2mm}
+      \hbox to 5.78in { {\em #3 \hfill #4} }
+    }
+  }
+  \end{center}
+  \vspace*{4mm}
+}
+
+\newcommand{\lecture}[4]{\handout{#1}{#2}{#3}{#4}{Lecture #1}}
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+\textheight 8.9in
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+\textwidth 6.5in
+
+\parindent 0in
+\parskip 1.5ex
+%\renewcommand{\baselinestretch}{1.25}
+
+\newcommand{\squishlist}{
+ \begin{list}{$\bullet$}
+  { \setlength{\itemsep}{0pt}
+     \setlength{\parsep}{3pt}
+     \setlength{\topsep}{3pt}
+     \setlength{\partopsep}{0pt}
+     \setlength{\leftmargin}{1.5em}
+     \setlength{\labelwidth}{1em}
+     \setlength{\labelsep}{0.5em} } }
+\newcommand{\squishlisttwo}{
+ \begin{list}{$\bullet$}
+  { \setlength{\itemsep}{0pt}
+     \setlength{\parsep}{0pt}
+    \setlength{\topsep}{0pt}
+    \setlength{\partopsep}{0pt}
+    \setlength{\leftmargin}{2em}
+    \setlength{\labelwidth}{1.5em}
+    \setlength{\labelsep}{0.5em} } }
+\newcommand{\squishend}{
+  \end{list}  }
+
+\begin{document}
+
+\lecture{14 --- November 13, 2018}{Fall 2018}{Patrick Lam}{version 1}
+
+\section*{Final Exam Tips}
+
+\begin{enumerate}
+\item {\bf don't do all-nighters: they make you stupid}
+\item start studying early
+\item make questions and ask each other
+\item do old midterms
+\end{enumerate}
+
+\section*{Curriculum Preview: SE380}
+
+James will talk about one of your core courses, SE 380
+(Feedback Control).
+
+\section*{Game Development}
+
+Lots of SE students are interested in game development. So I did some research about the industry.
+Here's my take on it. I talked to two friends in the industry, both based in Montreal. Their paths:
+\begin{enumerate}
+\item education in theatre, on to web development, novel writing, and
+  currently a career focussing on indie game design (art track);
+\item Waterloo computer engineering degree including most co-ops in
+  the game industry; currently works at Behaviour Interactive
+  (\url{www.bhvr.com}) (tech track).
+\end{enumerate}
+
+\paragraph{Workload.} The game industry is notoriously time-sensitive: demos absolutely need
+to be ready by the big deadline. This results in unhealthy work habits (``crunch time'').
+Crunch time works because people really want to be in the game industry. It can be frustrating
+when poor management results in a crunch not actually having been needed. I got a report that
+it's not as bad as it used to be, with the maturation of the industry; however, it still does
+depend on whether the company is working on contract with another company (better specs)
+or if it has its own publishing arm. I heard rumours that Red Dead Redemption 2 had pretty poor working conditions.
+
+\paragraph{Work situations.} There are indie game devs, and there are huge game companies.
+Formal engineering education is perhaps best suited/designed for being
+a cog in a huge company, although Waterloo's entrepreneurship
+initiatives aim to help equip people for working on their own.
+If you are thinking of being closer to the indie side of the spectrum, you have a lot more
+responsibility for yourself. It's worthwhile to learn from artists about how to be an artist
+and pay the bills. Talk to people in East Campus Hall. Take the Computational Fine Arts option.
+
+\paragraph{Diversity.} There's a lot to say about diversity. Perhaps I can summarize with 
+``don't be an awful person, and realize that we all have biases.''
+
+\paragraph{Your education.} 
+I was surprised that my friend cited some of the more hardware-related
+computer engineering material as being helpful. In particular, even
+things like high-pass and low-pass filters (ECE 140) were helpful. Of
+course, if you are writing code, then the fundamental CS knowledge in
+courses like CS 137 through CS 240 etc will help. Graphics (CS 488,
+requires CS 370) is going to help, obviously. And AI is helpful also
+(CS 486/ECE 457A,B, plus feedback control).
+
+A higher-level statement that I can make is that a lot of the things
+that we teach you are not immediately applicable. You need to figure
+out how they relate. So when you see a physics principle, go ahead and
+also try to program a simulation. There are lots of toolkits on the
+Internet which let you do that. Almost everything you learn can be
+applied to game design, but it is up to you to develop the
+connections.
+
+
+\end{document}
